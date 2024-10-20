@@ -1,8 +1,9 @@
 <template>
   <LayoutBase>
-    <Toolbar title="Cadastro de aluno" />
+    <Toolbar :title="toolbarTitle" class="toolbar" />
 
     <v-form ref="formRef" v-model="valid" lazy-validation>
+      <v-container class="formContainer">
       <v-row>
         <v-col cols="12">
           <v-text-field
@@ -11,6 +12,7 @@
             :rules="[rules.required]"
             :error-messages="getErrorMessages('name')"
             placeholder="Informe o nome completo"
+            variant="outlined"
           />
         </v-col>
 
@@ -18,6 +20,7 @@
           <v-text-field
             v-model="student.email"
             label="E-mail"
+            variant="outlined"
             :rules="[rules.required, rules.email]"
             :error-messages="getErrorMessages('email')"
             placeholder="Informe apenas um e-mail"
@@ -29,6 +32,7 @@
           <v-text-field
             v-model="student.ra"
             label="RA"
+            variant="outlined"
             :rules="[rules.required, rules.ra]"
             :error-messages="getErrorMessages('ra')"
             placeholder="Informe o registro acadêmico"
@@ -42,6 +46,7 @@
           <v-text-field
             v-model="student.cpf"
             label="CPF"
+            variant="outlined"
             :rules="[rules.required, rules.cpf]"
             :error-messages="getErrorMessages('cpf')"
             placeholder="Informe o número do documento"
@@ -51,14 +56,14 @@
           />
         </v-col>
       </v-row>
-
-      <v-row justify="end">
+      </v-container>
+      <v-row justify="end" class="mt-4 mr-3">
         <v-btn color="grey" class="mr-4" :to="{ path: '/' }">Cancelar</v-btn>
         <v-btn color="primary" @click="saveForm">Salvar</v-btn>
       </v-row>
     </v-form>
 
-    <Snackbar :text="snackbarMessage" v-model="showSnackbar" />
+    <Snackbar :text="snackbarMessage" v-model="showSnackbar" :color="snackbarColor" />
   </LayoutBase>
 </template>
 
@@ -68,6 +73,7 @@ import { useRoute } from 'vue-router';
 import LayoutBase from '../components/BaseLayout/BaseLayout.vue';
 import Toolbar from '../components/Toolbar/Toolbar.vue';
 import Snackbar from '../components/Snackbar/Snackbar.vue';
+import { CreateStudent, EditStudent, GetStudentByRA } from '@/services/StudentsService';
 
 export default {
   components: {
@@ -87,6 +93,7 @@ export default {
     });
 
     const snackbarMessage = ref('');
+    const snackbarColor = ref('');
     const showSnackbar = ref(false);
     const isFormSubmitted = ref(false);
     const touchedFields = ref({
@@ -104,17 +111,21 @@ export default {
     };
 
     const route = useRoute();
+    const toolbarTitle = ref('Cadastro de aluno'); 
 
     onMounted(() => {
       const ra = route.query.ra;
       if (ra) {
-        const students = JSON.parse(localStorage.getItem('students')) || [];
-        const foundStudent = students.find((s) => s.ra === ra);
+        toolbarTitle.value = 'Edição de aluno';
 
-        if (foundStudent) {
-          student.value = { ...foundStudent };
-          isEditing.value = true;
-        }
+        GetStudentByRA(ra)
+          .then((data) => {
+            student.value = data;
+            isEditing.value = true;
+          })
+          .catch((error) => {
+            showSnackbarWithMessage(error.response.data, 'red');
+          });
       }
     });
 
@@ -135,35 +146,50 @@ export default {
     const saveForm = () => {
       isFormSubmitted.value = true;
 
-      if (Object.keys(student.value).every((field) => getErrorMessages(field).length === 0)) {
-        let students = JSON.parse(localStorage.getItem('students')) || [];
-        const index = students.findIndex((s) => s.ra === student.value.ra);
+      if (valid.value) {
+        const studentData = {
+          name: student.value.name,
+          email: student.value.email,
+          ra: student.value.ra,
+          cpf: student.value.cpf,
+        };
 
-        if (index !== -1) {
-          students[index] = student.value;
-          snackbarMessage.value = 'Aluno atualizado com sucesso!';
+        if (!isEditing.value) {
+          CreateStudent(studentData)
+            .then((data) => {
+              showSnackbarWithMessage('Aluno cadastrado com sucesso!', 'green');
+              resetForm();
+            })
+            .catch((error) => {
+              showSnackbarWithMessage(error.response.data, 'red');
+            });
         } else {
-          students.push(student.value);
-          snackbarMessage.value = 'Aluno cadastrado com sucesso!';
+          EditStudent(studentData.ra, studentData)
+            .then((data) => {
+              showSnackbarWithMessage('Aluno atualizado com sucesso!', 'green');
+            })
+            .catch((error) => {
+              showSnackbarWithMessage(error.response.data, 'red');
+            });
         }
-
-        localStorage.setItem('students', JSON.stringify(students));
-        showSnackbar.value = true;
-
-        resetForm();
       }
     };
 
-    
+    const showSnackbarWithMessage = (message, color) => {
+      snackbarMessage.value = message;
+      showSnackbar.value = true;
+      snackbarColor.value = color
+    };
+
     const resetForm = () => {
       student.value = { name: '', email: '', ra: '', cpf: '' };
 
       touchedFields.value = { name: false, email: false, ra: false, cpf: false };
 
       if (formRef.value) {
-        formRef.value.reset(); 
+        formRef.value.reset();
         isFormSubmitted.value = false;
-        valid.value = false; 
+        valid.value = false;
       }
     };
 
@@ -175,11 +201,24 @@ export default {
       rules,
       saveForm,
       snackbarMessage,
+      snackbarColor,
       showSnackbar,
       isFormSubmitted,
       setTouched,
       getErrorMessages,
+      toolbarTitle,
     };
   },
 };
 </script>
+
+<style>
+.formContainer{
+  background-color: #FFFF;
+  border-radius: 0px 0px 10px 10px;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+
+</style>

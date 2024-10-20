@@ -1,10 +1,15 @@
 <template>
-  <v-snackbar v-model="snackbar" :timeout="3000">
+  <v-snackbar 
+    v-model="snackbar" 
+    :timeout="3000" 
+    :color="snackbarColor" 
+    dark
+  >
     <div style="text-align: center; width: 100%;"> 
       {{ text }}
     </div>
     <template v-slot:actions>
-      <v-btn color="pink" variant="text" @click="snackbar = false">
+      <v-btn color="white" variant="text" @click="snackbar = false">
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </template>
@@ -21,6 +26,10 @@ export default {
     value: { 
       type: Boolean,
       default: false
+    },
+    color: { 
+      type: String, 
+      default: "#4392F1"  
     }
   },
   data() {
@@ -28,10 +37,16 @@ export default {
       snackbar: this.value, 
     };
   },
- watch: {
+  computed: {
+    snackbarColor() {
+      return this.color || "#4392F1"; 
+    }
+  },
+  watch: {
     value(newValue) {
-        this.snackbar = newValue; 
+      this.snackbar = newValue; 
     }
   }
 }
 </script>
+

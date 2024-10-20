@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\SchoolManagement.csproj": {}
+    "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\SchoolManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\SchoolManagement.csproj": {
+    "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\SchoolManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\SchoolManagement.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\SchoolManagement.csproj",
         "projectName": "SchoolManagement",
-        "projectPath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\SchoolManagement.csproj",
+        "projectPath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\SchoolManagement.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

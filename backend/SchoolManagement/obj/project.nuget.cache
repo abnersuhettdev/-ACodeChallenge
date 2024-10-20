@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/mxTIoFbGFg=",
+  "dgSpecHash": "EPb1zTY8qwU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge\\backend\\SchoolManagement\\SchoolManagement.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\OneDrive\\Documentos\\+A CHALLENGE\\-ACodeChallenge-1\\backend\\SchoolManagement\\SchoolManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.10\\microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.10\\microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",

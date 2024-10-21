@@ -26,7 +26,7 @@ namespace SchoolManagement.Services
             var student = _context.Students.SingleOrDefault(s => s.RA == ra);
             if (student == null)
             {
-                return new Result<Student>().InvalidResult("Student not found.");
+                return new Result<Student>().InvalidResult("Aluno não encontrado.");
             }
 
             return new Result<Student>().SuccessResult(student);
@@ -42,7 +42,7 @@ namespace SchoolManagement.Services
             }
             catch (DbUpdateException ex)
             {
-                return new Result<Student>().InvalidResult("Failed to create user.", student);
+                return new Result<Student>().InvalidResult("Erro ao criar aluno.", student);
             }
         }
 
@@ -51,7 +51,7 @@ namespace SchoolManagement.Services
             var existingStudent = _context.Students.SingleOrDefault(s => s.RA == student.RA);
             if (existingStudent == null)
             {
-                return new Result<Student>().InvalidResult("Student not found.");
+                return new Result<Student>().InvalidResult("Aluno não encontrado.");
             }
 
             existingStudent.Name = student.Name;
@@ -60,7 +60,7 @@ namespace SchoolManagement.Services
             var saveResult = _context.SaveChanges();
             if (saveResult == 0)
             {
-                return new Result<Student>().InvalidResult("Failed to update student.");
+                return new Result<Student>().InvalidResult("Erro ao atualizar aluno.");
             }
 
             return new Result<Student>().SuccessResult(existingStudent);
@@ -71,7 +71,7 @@ namespace SchoolManagement.Services
             var student = _context.Students.SingleOrDefault(s => s.RA == ra);
             if (student == null)
             {
-                return new Result<Student>().InvalidResult("Student not found.");
+                return new Result<Student>().InvalidResult("Aluno não encontrado.");
             }
 
             try
@@ -82,7 +82,7 @@ namespace SchoolManagement.Services
             }
             catch (DbUpdateException ex)
             {
-                return new Result<Student>().InvalidResult("Failed to delete student.", student);
+                return new Result<Student>().InvalidResult("Erro ao excluir aluno.", student);
             }
         }
 

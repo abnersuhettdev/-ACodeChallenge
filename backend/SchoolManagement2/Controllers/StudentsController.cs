@@ -47,7 +47,7 @@ namespace SchoolManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStudent(Student student)
+        public IActionResult CreateStudent([FromBody] Student student)
         {
             var result = _studentRules.CreateStudent(student);
             if (result.IsNotOkResult())

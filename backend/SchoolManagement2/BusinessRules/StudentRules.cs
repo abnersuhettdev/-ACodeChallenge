@@ -106,10 +106,13 @@ namespace SchoolManagement.BusinessRules
                 return new Result<Student>().InvalidResult("O email é obrigatório e deve ser válido.");
             }
 
-            var validStudentEmail = _studentsService.ValidateStudentEmail(student.Email);
-            if (validStudentEmail.IsNotOkResult())
+            if(student.Email != existingStudent.Data.Email)
             {
-                return new Result<Student>().InvalidResult(validStudentEmail.Error);
+                var validStudentEmail = _studentsService.ValidateStudentEmail(student.Email);
+                if (validStudentEmail.IsNotOkResult())
+                {
+                    return new Result<Student>().InvalidResult(validStudentEmail.Error);
+                }
             }
 
             var updatedStudent = _studentsService.UpdateStudent(student);

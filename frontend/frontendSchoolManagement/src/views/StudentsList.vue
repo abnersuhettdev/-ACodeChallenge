@@ -76,6 +76,7 @@ export default {
     const headers = [
       { title: 'Registro Acadêmico', key: 'ra', sortable: false },
       { title: 'Nome', key: 'name', sortable: false },
+      { title: 'E-mail', key: 'email', sortable: false },
       { title: 'CPF', key: 'cpf', sortable: false },
       { title: 'Ações', key: 'actions', sortable: false },
     ];

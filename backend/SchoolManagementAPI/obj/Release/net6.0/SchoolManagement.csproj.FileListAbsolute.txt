@@ -52,7 +52,6 @@ C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\School
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\SchoolManagement.runtimeconfig.json
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\SchoolManagement.dll
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\SchoolManagement.pdb
-C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\BCrypt.Net-Next.dll
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\Humanizer.dll
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Admin\OneDrive\Documentos\+A CHALLENGE\-ACodeChallenge-1\backend\SchoolManagementAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll

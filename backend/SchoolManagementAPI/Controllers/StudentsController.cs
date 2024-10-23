@@ -52,8 +52,6 @@ namespace SchoolManagement.Controllers
             return Ok(result.Data);
         }
 
-       
-
         [HttpPut("{ra}")]
         public IActionResult UpdateStudent(string ra, Student student)
         {

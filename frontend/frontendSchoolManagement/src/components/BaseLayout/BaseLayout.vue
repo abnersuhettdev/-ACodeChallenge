@@ -11,6 +11,14 @@
             Alunos
           </router-link>
         </v-list-item>
+        <v-list-item>
+          <v-img
+            :width="300"
+            aspect-ratio="16/9"
+            cover
+            src="../../src/assets/Logo.png"
+          ></v-img>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-main class="content-container">
@@ -32,7 +40,7 @@ export default {
   width: 200px;
 }
 
-.title{
+.title {
   text-align: center;
   font-weight: bold;
 }
@@ -47,22 +55,23 @@ export default {
   padding: 10px 15px;
   color: black;
   text-decoration: none;
-  background-color: transparent; 
+  background-color: transparent;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-button:hover {
-  background-color: #5b6c5dab; 
+  background-color: #5b6c5dab;
   color: #ffff;
 }
 
 .router-link-exact-active {
-  background-color: #4A5248; 
+  background-color: #4A5248;
   color: #ffff;
   font-weight: bold;
 }
 
-.content-container{
+.content-container {
   background-color: #f5f5f5;
 }
+
 </style>

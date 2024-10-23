@@ -142,8 +142,6 @@ namespace SchoolManagement.BusinessRules
             return new Result().SuccessResult();
         }
 
-       
-
         private bool IsValidCpf(string cpf)
         {
             var regex = new Regex(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$");

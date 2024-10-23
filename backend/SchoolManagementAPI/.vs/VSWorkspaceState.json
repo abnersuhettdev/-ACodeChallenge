@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\Controllers",
+    "\\Repository"
   ],
   "SelectedNode": "\\Controllers\\StudentsController.cs",
   "PreviewInSolutionExplorer": false

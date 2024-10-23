@@ -90,7 +90,7 @@ namespace SchoolManagement.Repository
         {
             var exists = _context.Students.Any(s => s.Email == email);
 
-            if (exists != null)
+            if (exists != false)
             {
                 return new Result().InvalidResult("Email já está em uso.");
             }
@@ -101,12 +101,12 @@ namespace SchoolManagement.Repository
         public Result ValidateStudentData(Student student)
         {
             var existsRA = _context.Students.Any(s => s.RA == student.RA);
-            if (existsRA != null)
+            if (existsRA != false)
             {
                 return new Result().InvalidResult("RA já está em uso.");
             }
             var existsCPF = _context.Students.Any(s => s.CPF == student.CPF);
-            if (existsCPF != null)
+            if (existsCPF != false)
             {
                 return new Result().InvalidResult("CPF já está em uso.");
             }
